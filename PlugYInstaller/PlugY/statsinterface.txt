@@ -1,0 +1,88 @@
+*desc	statID	enabled	page	x	y	color	font	*pos (inverse)	end
+item_magicbonus	80	1	1	45	680	8	1	21	0
+item_goldbonus	79	1	1	45	660	8	1	20	0
+item_addexperience	85	1	1	45	640	8	1	19	0
+skill_more	479	1	1	45	600		1	17	0
+potion_stat_cap	185	1	1	45	580		1	16	0
+potion_skill_cap	186	1	1	45	560		1	15	0
+damagepercent	25	1	1	45	540		1	14	0
+skill_armor_percent	171	1	1	45	520		1	13	0
+manarecoverybonus	27	1	1	45	500		1	12	0
+item_maxhp_percent	76	1	1	45	480		1	11	0
+item_maxmana_percent	77	1	1	45	460		1	10	0
+item_fasterattackrate	93	1	1	45	440	5	1	9	0
+item_fastercastrate	105	1	1	45	420	5	1	8	0
+item_fastermovevelocity	96	1	1	45	400	5	1	7	0
+item_fastergethitrate	99	1	1	45	380	5	1	6	0
+item_fasterblockrate	102	1	1	45	360	5	1	5	0
+item_strength_percent	359	1	1	45	340		1	4	0
+item_dexterity_percent	360	1	1	45	320		1	3	0
+item_energy_percent	361	1	1	45	300		1	2	0
+item_vitality_percent	362	1	1	45	280		1	1	0
+skill_concentration	164	1	2	45	680		1	21	0
+item_tohit_percent	119	1	2	45	660		1	20	0
+item_crushingblow	136	1	2	45	640		1	19	0
+item_deadlystrike	141	1	2	45	620		1	18	0
+item_openwounds	135	1	2	45	600		1	17	0
+item_fractionaltargetac	116	1	2	45	580		1	16	0
+item_howl	112	1	2	45	560		1	15	0
+item_demondamage_percent	121	1	2	45	540		1	14	0
+item_undeaddamage_percent	122	1	2	45	520		1	13	0
+enr_factor	485	1	2	45	500		1	12	0
+enr_factor_percent	488	1	2	45	480		1	11	0
+passive_pm_mastery	357	1	2	45	460		1	10	0
+passive_fire_mastery	329	1	2	45	440	1	1	9	0
+passive_fire_pierce	333	1	2	45	420	1	1	8	0
+passive_ltng_mastery	330	1	2	45	400	9	1	7	0
+passive_ltng_pierce	334	1	2	45	380	9	1	6	0
+passive_cold_mastery	331	1	2	45	360	3	1	5	0
+passive_cold_pierce	335	1	2	45	340	3	1	4	0
+passive_pois_mastery	332	1	2	45	320	2	1	3	0
+passive_pois_pierce	336	1	2	45	300	2	1	2	0
+skill_poison_dur	431	1	2	45	280	2	1	1	0
+passive_avoid	339	1	3	45	680		1	21	0
+normal_damage_reduction	34	1	3	45	660		1	20	0
+magic_damage_reduction	35	1	3	45	640		1	19	0
+damageresist	36	1	3	45	620		1	18	0
+magicresist	37	1	3	45	600		1	17	0
+fireresist	39	1	3	45	580	1	1	16	0
+maxfireresist	40	1	3	45	560	1	1	15	0
+item_absorbfire_percent	142	1	3	45	540	1	1	14	0
+lightresist	41	1	3	45	520	9	1	13	0
+maxlightresist	42	1	3	45	500	9	1	12	0
+item_absorblight_percent	144	1	3	45	480	9	1	11	0
+coldresist	43	1	3	45	460	3	1	10	0
+maxcoldresist	44	1	3	45	440	3	1	9	0
+item_absorbcold_percent	148	1	3	45	420	3	1	8	0
+poisonresist	45	1	3	45	400	2	1	7	0
+maxpoisonresist	46	1	3	45	380	2	1	6	0
+item_poisonlengthresist	110	1	3	45	360	2	1	5	0
+hpregen	74	1	3	45	340		1	4	0
+item_healwhenstruck	439	1	3	45	320		1	3	0
+item_damagetomana	114	1	3	45	300		1	2	0
+item_howlthorns	364	1	3	45	280		1	1	0
+item_slow	150	1	4	45	680		1	21	0
+item_slow_offweapon	376	1	4	45	660		1	20	0
+item_slowthorns	363	1	4	45	640		1	19	0
+item_lightradius	89	1	4	45	620		1	18	0
+item_healonstriking	208	1	4	45	600		1	17	0
+skill_healonstrikingmelee	210	1	4	45	580		1	16	0
+item_healafterkill	86	1	4	45	560		1	15	0
+lifedrainmindam	60	1	4	45	540		1	14	0
+item_manaonstriking	209	1	4	45	520		1	13	0
+item_manaonstrikingmelee	295	1	4	45	500		1	12	0
+item_manaafterkill	138	1	4	45	480		1	11	0
+manadrainmindam	62	1	4	45	460		1	10	0
+profession_duration_mod	409	1	4	45	440		1	9	0
+item_targettakesdamage	489	1	4	45	420		1	8	0
+item_attackertakesdamage	78	1	4	45	400		1	7	0
+skill_minion_hp_percent	444	1	4	45	380		1	6	0
+skill_minion_dmg_percent	470	1	4	45	360		1	5	0
+item_minion_attack	500	1	4	45	340		1	4	0
+minion_resist_all	487	1	4	45	320		1	3	0
+thorns_percent	131	1	4	45	300		1	2	0
+item_reducedprices	87	1	4	45	280		1	1	0
+burningmin	316	1	1	145	700	4	6		0
+burningmax	317	1	2	145	700	4	6		0
+progressive_damage	318	1	3	145	700	4	6		0
+progressive_steal	319	1	4	145	700	4	6		0

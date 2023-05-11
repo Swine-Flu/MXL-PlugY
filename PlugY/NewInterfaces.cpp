@@ -398,7 +398,7 @@ void Install_NewInterfaces()
 	}
 
 	// Stats page drawing hook
-	mem_seek RVA(D2Sigma, 0x60BABB, 0x07AF5B, 0x07F9CA, 0x07D67C, 0x07D71C, 0x07DE3C, 0x07F0CC);
+	mem_seek RVA(D2Sigma, 0x60BABB, 0x07AF5B, 0x07F9CA, 0x07D67C, 0x07D71C, 0x07DE3C, 0x07F0CC, 0x07F81C, 0x07FC9C);
 	MEMC_REF4(D2DrawStatsPage, printCustomPage);
 	
 	/*
@@ -427,7 +427,7 @@ void Install_NewInterfaces()
 	*/
 
 	// Manage mouse down (Play sound)
-	mem_seek RVA(D2Sigma, 0x6058B4, 0x074A74, 0x0796C4, 0x077364, 0x077404, 0x077B14, 0x078D64);
+	mem_seek RVA(D2Sigma, 0x6058B4, 0x074A74, 0x0796C4, 0x077364, 0x077404, 0x077B14, 0x078D64, 0x079484, 0x079854);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_mouseCustomPageLeftDown_mxls);
 	memt_byte(0xF6, 0x90);
@@ -445,7 +445,7 @@ void Install_NewInterfaces()
 	*/
 
 	// Manage mouse up
-	mem_seek RVA(D2Sigma, 0x6058F4, 0x074AB4, 0x079704, 0x0773A4, 0x077444, 0x077B54, 0x078DA4);
+	mem_seek RVA(D2Sigma, 0x6058F4, 0x074AB4, 0x079704, 0x0773A4, 0x077444, 0x077B54, 0x078DA4, 0x0794C4, 0x079894);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_mouseCustomPageLeftUp_mxls);
 	memt_byte(0xF6, 0x90);

@@ -583,7 +583,7 @@ void Install_DisplayBaseStatsValue()
 	log_msg("Patch D2Sigma for display base stats value. (DisplayBaseStatsValue)\n");
 
 	// Stats page ui items drawing hook
-	mem_seek RVA(D2Sigma, 0x6072F0, 0x0764C0, 0x07B110, 0x078E20, 0x078EC0, 0x0795D0, 0x07A820);
+	mem_seek RVA(D2Sigma, 0x6072F0, 0x0764C0, 0x07B110, 0x078E20, 0x078EC0, 0x0795D0, 0x07A820, 0x07AF40, 0x07B310);
 	MEMC_REF4(D2DrawStatsPageUiElements, caller_printStatsPage_mxls);
 
 	/*
@@ -786,17 +786,17 @@ void Install_RefreshGambleStock()
 	log_msg("Patch D2Sigma to add gamble refresh button. (EnableGambleRefresh)\n");
 
 	// Store page drawing hook
-	mem_seek RVA(D2Sigma, 0x5E75C3, 0x053249, 0x057769, 0x0544D9, 0x054559, 0x054929, 0x055549);
+	mem_seek RVA(D2Sigma, 0x5E75C3, 0x053249, 0x057769, 0x0544D9, 0x054559, 0x054929, 0x055549, 0x0554F9, 0x055859);
 	MEMC_REF4(D2DrawStorePage, caller_PrintStorePageBtns_mxls);
 
 	// Manage mouse down (Play sound)
-	mem_seek RVA(D2Sigma, 0x60CCD4, 0x07C194, 0x081394, 0x07FC14, 0x07FCD4, 0x080524, 0x081894);
+	mem_seek RVA(D2Sigma, 0x60CCD4, 0x07C194, 0x081394, 0x07FC14, 0x07FCD4, 0x080524, 0x081894, 0x0820B4, 0x0828F4);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_StorePageMouseDn_mxls);
 	memt_byte(0xF6, 0x90);
 
 	// Manage mouse up
-	mem_seek RVA(D2Sigma, 0x60CD84, 0x07C244, 0x081444, 0x07FCC4, 0x07FD84, 0x0805D4, 0x081944);
+	mem_seek RVA(D2Sigma, 0x60CD84, 0x07C244, 0x081444, 0x07FCC4, 0x07FD84, 0x0805D4, 0x081944, 0x082164, 0x0829A4);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_StorePageMouseUp_mxls);
 	memt_byte(0xF6, 0x90);
@@ -816,16 +816,16 @@ void Install_DisableSpecLifebar()
 	log_msg("Patch D2Sigma to disable special lifebar. (DisableSpecialLifebar)\n");
 
 	// Disable special lifebar
-	mem_seek RVA(D2Sigma, 0x60BBA6, 0x07B046, 0x07FAB5, 0x07D6FD, 0x07D79D, 0x07DEBD, 0x07F14D);
+	mem_seek RVA(D2Sigma, 0x60BBA6, 0x07B046, 0x07FAB5, 0x07D6FD, 0x07D79D, 0x07DEBD, 0x07F14D, 0x07F89D, 0x07FD1D);
 	memt_byte(0xE8, 0x90);
-	memt_dword(VAL(D2Sigma, 0xFFFE95D5, 0xFFFE6B65, 0xFFFE66F6, 0xFFFE66EE, 0xFFFE669E, 0xFFFE634E, 0xFFFE5E0E), 0x90909090);
+	memt_dword(VAL(D2Sigma, 0xFFFE95D5, 0xFFFE6B65, 0xFFFE66F6, 0xFFFE66EE, 0xFFFE669E, 0xFFFE634E, 0xFFFE5E0E, 0xFFFE5A5E, 0xFFFE592E), 0x90909090);
 
 	// Draw regular lifebar while hovering cursor under the target
-	mem_seek RVA(D2Sigma, 0x5F532A, 0x061D5A, 0x06635A, 0x06312B, 0x06317B, 0x06354B, 0x06429B);
+	mem_seek RVA(D2Sigma, 0x5F532A, 0x061D5A, 0x06635A, 0x06312B, 0x06317B, 0x06354B, 0x06429B, 0x06463B, 0x06498F);
 	memt_dword(0x00000201, 0x00000001); // MonStats3 flags: specLifebar|noLifebar (0x0201)
 
 	// Display resistances and unqiue modifiers
-	mem_seek RVA(D2Sigma, 0x5E66A6, 0x052266, 0x056776, 0x0534D6, 0x053556, 0x053926, 0x054546);
+	mem_seek RVA(D2Sigma, 0x5E66A6, 0x052266, 0x056776, 0x0534D6, 0x053556, 0x053926, 0x054546, 0x0544F6, 0x054856);
 	memt_dword(0x00000200, 0x00000000); // MonStats3 flags: specLifebar (0x0200)
 
 	log_msg("\n");

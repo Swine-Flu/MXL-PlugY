@@ -20,9 +20,9 @@ s_shifting shifting;
 #define A7(X, Z, A,B,C,D,E,F,G,H, R, N, P) T##N N;
 #define C7(Z, A,B,C,D,E,F,G,H, T, N)       T* pt##N;
 
-#define FUNC(Z, V, A, B, C, D, E, F, G, R, N, P)	T##N N;
-#define VAR(Z, A, B, C, D, E, F, G, T, N)			T* N;
-#define PTR(Z, A, B, C, D, E, F, G, N)				void* N;
+#define FUNC(Z, V, A, B, C, D, E, F, G, H, I, R, N, P)	T##N N;
+#define VAR(Z, A, B, C, D, E, F, G, H, I, T, N)			T* N;
+#define PTR(Z, A, B, C, D, E, F, G, H, I, N)			void* N;
 
 #include "../Commons/D2Funcs.h"
 DataTables* SgptDataTables;
@@ -687,9 +687,9 @@ void initD2functions()
 	#define A7(X, Z, A,B,C,D,E,F,G,H, R, N, P) N = (T##N)R7(Z,A,B,C,D,E,F,G,H);
 	#define C7(Z, A,B,C,D,E,F,G,H, T, N)       pt##N = (T*)R7(Z,A,B,C,D,E,F,G,H);
 
-	#define FUNC(Z, V, A, B, C, D, E, F, G, R, N, P)	N = (T##N)(RVA(Z, A, B, C, D, E, F, G));
-	#define VAR(Z, A, B, C, D, E, F, G, T, N)			N = (T*)(RVA(Z, A, B, C, D, E, F, G));
-	#define PTR(Z, A, B, C, D, E, F, G, N)				N = (void*)(RVA(Z, A, B, C, D, E, F, G));
+	#define FUNC(Z, V, A, B, C, D, E, F, G, H, I, R, N, P)	N = (T##N)(RVA(Z, A, B, C, D, E, F, G, H, I));
+	#define VAR(Z, A, B, C, D, E, F, G, H, I, T, N)			N = (T*)(RVA(Z, A, B, C, D, E, F, G, H, I));
+	#define PTR(Z, A, B, C, D, E, F, G, H, I, N)			N = (void*)(RVA(Z, A, B, C, D, E, F, G, H, I));
 
 	#include "../Commons/D2Funcs.h"
 	SgptDataTables = *(DataTables**) R7(D2Common, 0000, 0000, 96A20, 9B74C, 9EE8C, 9B500, 99E1C, A33F0);

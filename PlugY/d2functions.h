@@ -44,7 +44,7 @@ extern s_shifting shifting;
 #define R7(Z,A,B,C,D,E,F,G,H) (offset_##Z + (version_##Z == V113d? 0x##H : (version_##Z == V113c? 0x##G : (version_##Z == V112? 0x##F : (version_##Z == V111b? 0x##E : (version_##Z == V111? 0x##D : (version_##Z == V110? 0x##C : (version_##Z == V109d? 0x##B : 0x##A))))))))
 #define V7(Z,A,B,C,D,E,F,G,H) (version_##Z == V113d? 0x##H : (version_##Z == V113c? 0x##G : (version_##Z == V112? 0x##F : (version_##Z == V111b? 0x##E : (version_##Z == V111? 0x##D : (version_##Z == V110? 0x##C : (version_##Z == V109d? 0x##B : 0x##A)))))))
 
-#define RVA(Z, A, B, C, D, E, F, G) \
+#define RVA(Z, A, B, C, D, E, F, G, H, I) \
 	(offset_##Z + \
 	(version_##Z == MXLS_104 ? A : \
 	(version_##Z == MXLS_114 ? B : \
@@ -53,9 +53,12 @@ extern s_shifting shifting;
 	(version_##Z == MXLS_141 ? E : \
 	(version_##Z == MXLS_153 ? F : \
 	(version_##Z == MXLS_163 ? G : \
-	(exit(-1), 0) ))))))))
+	(version_##Z == MXLS_174 ? H : \
+	(version_##Z == MXLS_180 ? I : \
+	(log_msg("Unable to identify mod version.\n"), exit(-1), 0) \
+	))))))))))
 
-#define VAL(Z, A, B, C, D, E, F, G) \
+#define VAL(Z, A, B, C, D, E, F, G, H, I) \
 	(version_##Z == MXLS_104 ? A : \
 	(version_##Z == MXLS_114 ? B : \
 	(version_##Z == MXLS_123 ? C : \
@@ -63,7 +66,10 @@ extern s_shifting shifting;
 	(version_##Z == MXLS_141 ? E : \
 	(version_##Z == MXLS_153 ? F : \
 	(version_##Z == MXLS_163 ? G : \
-	(exit(-1), 0) )))))))
+	(version_##Z == MXLS_174 ? H : \
+	(version_##Z == MXLS_180 ? I : \
+	(log_msg("Unable to identify mod version.\n"), exit(-1), 0) \
+	)))))))))
 
 #define RX(v) (WindowStartX+(v))
 #define RY(v) (ResolutionY+NegWindowStartY-(v))
@@ -79,9 +85,9 @@ extern s_shifting shifting;
 #define A7(X, Z, A,B,C,D,E,F,G,H, R, N, P) typedef R (X##CALL  *T##N) P; extern T##N N;
 #define C7(Z, A,B,C,D,E,F,G,H, T, N)       extern T* pt##N;
 
-#define FUNC(Z, V, A, B, C, D, E, F, G, R, N, P)	typedef R (V##CALL *T##N) P; extern T##N N;
-#define VAR(Z, A, B, C, D, E, F, G, T, N)			extern T* N;
-#define PTR(Z, A, B, C, D, E, F, G, N)				extern void* N;
+#define FUNC(Z, V, A, B, C, D, E, F, G, H, I, R, N, P)	typedef R (V##CALL *T##N) P; extern T##N N;
+#define VAR(Z, A, B, C, D, E, F, G, H, I, T, N)			extern T* N;
+#define PTR(Z, A, B, C, D, E, F, G, H, I, N)			extern void* N;
 
 #include "../Commons/D2Funcs.h"
 extern DataTables* SgptDataTables;

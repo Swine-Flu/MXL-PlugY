@@ -38,7 +38,9 @@ enum eModVersion
 	MXLS_134,
 	MXLS_141,
 	MXLS_153,
-	MXLS_163
+	MXLS_163,
+	MXLS_174,
+	MXLS_180
 };
 
 const char* GetVersionString(int version);

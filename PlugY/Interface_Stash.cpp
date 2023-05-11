@@ -506,7 +506,7 @@ void Install_InterfaceStash()
 	log_msg("Patch D2Sigma for stash interface. (InterfaceStash)\n");
 
 	// Stash page drawing hook
-	mem_seek RVA(D2Sigma, 0x5E75D9, 0x05325F, 0x05777F, 0x0544EF, 0x05456F, 0x05493F, 0x05555F);
+	mem_seek RVA(D2Sigma, 0x5E75D9, 0x05325F, 0x05777F, 0x0544EF, 0x05456F, 0x05493F, 0x05555F, 0x05550F, 0x05586F);
 	MEMC_REF4(D2DrawStashPage, caller_printStashPage_mxls);
 
 	/*
@@ -534,7 +534,7 @@ void Install_InterfaceStash()
 	*/
 
 	// Manage mouse down (Play sound)
-	mem_seek RVA(D2Sigma, 0x605394, 0x074434, 0x078E04, 0x076A84, 0x076B24, 0x077234, 0x078444);
+	mem_seek RVA(D2Sigma, 0x605394, 0x074434, 0x078E04, 0x076A84, 0x076B24, 0x077234, 0x078444, 0x078B64, 0x078F34);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_manageBtnDown_mxls);
 	memt_byte(0xF6, 0x90);
@@ -550,7 +550,7 @@ void Install_InterfaceStash()
 	*/
 
 	// Manage mouse up
-	mem_seek RVA(D2Sigma, 0x6053F4, 0x074494, 0x078E64, 0x076AE4, 0x076B84, 0x077294, 0x0784A4);
+	mem_seek RVA(D2Sigma, 0x6053F4, 0x074494, 0x078E64, 0x076AE4, 0x076B84, 0x077294, 0x0784A4, 0x078BC4, 0x078F94);
 	memt_byte(0x8B, 0xE8);
 	MEMT_REF4(0x85182474, caller_manageBtnUp_mxls);
 	memt_byte(0xF6, 0x90);
@@ -582,7 +582,7 @@ void Install_InterfaceStash()
 	*/
 
 	// Search for set items in a personal/shared stash
-	mem_seek RVA(D2Sigma, 0x5F086E, 0x05CE5E, 0x06148E, 0x05E30E, 0x05E36E, 0x05E73E, 0x05F42E);
+	mem_seek RVA(D2Sigma, 0x5F086E, 0x05CE5E, 0x06148E, 0x05E30E, 0x05E36E, 0x05E73E, 0x05F42E, 0x05F53E, 0x05F89E);
 	MEMC_REF4(D2FindSetItemById, FindItemFromSet);
 
 	/*

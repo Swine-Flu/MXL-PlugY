@@ -481,7 +481,7 @@ void Install_StatsLimitShiftClick()
 	log_msg("Patch D2Sigma for limit the assigment of stat points when shift is used. (LimitShift)\n");
 
 	// Limit the assigment of stat points.
-	mem_seek RVA(D2Sigma, 0x5FD110, 0x06A82E, 0x06EC1E, 0x06BDFF, 0x06BEBF, 0x06C2FF, 0x06D06F);
+	mem_seek RVA(D2Sigma, 0x5FD110, 0x06A82E, 0x06EC1E, 0x06BDFF, 0x06BEBF, 0x06C2FF, 0x06D06F, 0x06D41F, 0x06D79F);
 	if (version_D2Sigma > MXLS_104)
 	{
 		memt_dword(0x00000019, limitValueToShiftClick);

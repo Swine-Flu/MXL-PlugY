@@ -175,7 +175,7 @@ void Install_InterfaceSkills()
 	log_msg("Patch D2Sigma for skills interface. (InterfaceSkills)\n");
 
 	// Skills page drawing hook
-	mem_seek RVA(D2Sigma, 0x60BAA8, 0x07AF48, 0x07F9B7, 0x07D669, 0x07D709, 0x07DE29, 0x07F0B9);
+	mem_seek RVA(D2Sigma, 0x60BAA8, 0x07AF48, 0x07F9B7, 0x07D669, 0x07D709, 0x07DE29, 0x07F0B9, 0x07F809, 0x07FC89);
 	MEMC_REF4(D2DrawSkillsPage, caller_printSkillsPage_mxls);
 
 	/*
@@ -226,9 +226,9 @@ void Install_InterfaceSkills()
 	if (posXUnassignSkillBtn==-1 && posYUnassignSkillBtn==-1)
 	{
 		// Don't print "Skill Points Remaining"
-		mem_seek RVA(D2Sigma, 0x604BE1, 0x073C81, 0x078651, 0x0763D1, 0x076471, 0x076B81, 0x077D61);
+		mem_seek RVA(D2Sigma, 0x604BE1, 0x073C81, 0x078651, 0x0763D1, 0x076471, 0x076B81, 0x077D61, 0x078461, 0x0787B1);
 		memt_byte(0xE8, 0x90);
-		memt_dword(VAL(D2Sigma, 0xFFFDFD5A, 0xFFFDC2FA, 0xFFFDBE3A, 0xFFFDAA5A, 0xFFFDAA3A, 0xFFFDA68A, 0xFFFD98CA), 0x90909090);
+		memt_dword(VAL(D2Sigma, 0xFFFDFD5A, 0xFFFDC2FA, 0xFFFDBE3A, 0xFFFDAA5A, 0xFFFDAA3A, 0xFFFDA68A, 0xFFFD98CA, 0xFFFD91CA, 0xFFFD946A), 0x90909090);
 		/*
 		mem_seek R7(D2Client, 7AC30, 7AC30, 77080, 16294, 8AC74, 7ECF4, 78334, 2F7E4);
 		memt_byte( 0xB9, 0xE8 );
@@ -243,7 +243,7 @@ void Install_InterfaceSkills()
 	}
 
 	// Manage mouse down (Play sound)
-	mem_seek RVA(D2Sigma, 0x604174, 0x073214, 0x077BE4, 0x075924, 0x0759D4, 0x0760C4, 0x0772A4);
+	mem_seek RVA(D2Sigma, 0x604174, 0x073214, 0x077BE4, 0x075924, 0x0759D4, 0x0760C4, 0x0772A4, 0x077984, 0x077CF4);
 	memt_byte( 0x8B, 0xE8 );
 	MEMT_REF4( 0x8520246C, caller_skillsPageMouseDown_mxls);
 	memt_byte( 0xED, 0x90 );
@@ -262,7 +262,7 @@ void Install_InterfaceSkills()
 	*/
 
 	// Manage mouse up
-	mem_seek RVA(D2Sigma, 0x6042C0, 0x073360, 0x077D30, 0x075A70, 0x075B20, 0x076210, 0x0773F0);
+	mem_seek RVA(D2Sigma, 0x6042C0, 0x073360, 0x077D30, 0x075A70, 0x075B20, 0x076210, 0x0773F0, 0x077AD0, 0x077E40);
 	memt_dword(0x04244C8B, 0xE838EC83);
 	MEMT_REF4(0x8538EC83, caller_skillsPageMouseUp_mxls);
 	memt_byte(0xC9, 0x90);

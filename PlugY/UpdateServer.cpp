@@ -146,7 +146,7 @@ void Install_UpdateServer()
 	log_msg("Patch D2Sigma & D2Net to provide custom packet handler. (UpdateServer)\n");
 
 	// C>S 0x4A packet handler
-	mem_seek RVA(D2Sigma, 0x7ED6F8, 0x55B768, 0x56D5E8, 0x567318, 0x579318, 0x581318, 0x58E320);
+	mem_seek RVA(D2Sigma, 0x7ED6F8, 0x55B768, 0x56D5E8, 0x567318, 0x579318, 0x581318, 0x58E320, 0x58E428, 0x599A20);
 	MEMT_DWORD(0x00000000, handleServerUpdate);
 
 	// C>S 0x4A packet size

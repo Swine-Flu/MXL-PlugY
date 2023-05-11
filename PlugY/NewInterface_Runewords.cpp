@@ -63,7 +63,7 @@ void printRuneword(RunesBIN* runesData, DWORD pos)
 	WCHAR typesEList[50];
 
 	LPWSTR lpText = D2GetStringFromIndex(runesData->RuneNameID);
-	if (LPWSTR lpName = wcsrchr(lpText, L'\n')) lpText = lpName++;
+	if (LPWSTR lpName = wcsrchr(lpText, L'\n')) lpText = lpName + 1;
 	D2SetFont(1);
 	DWORD nbPixel = D2GetPixelLen(lpText);
 	D2PrintString(lpText, 256 - nbPixel / 2, 65 + pos * 48, GOLD, 0);
@@ -198,13 +198,14 @@ void STDCALL printRunewordsPage()
 
 	//146;//B400
 	int nbRunes = *D2GetNbRunesBIN();
-	RunesBIN* runesFirst = nbRunes > 1 ? D2GetRunesBIN(1) - 1 : NULL;
-	RunesBIN* runesLast = runesFirst ? runesFirst + nbRunes : NULL;
+	RunesBIN* runesFirst = nbRunes > 0 ? D2GetRunesBIN(1) - 1 : NULL;
+	const DWORD sizeOfRunesBIN = version_D2Sigma < MXLS_180 ? sizeof(RunesBIN) : 0x170;
+	RunesBIN* runesLast = runesFirst ? (RunesBIN*)((DWORD)runesFirst + sizeOfRunesBIN * nbRunes) : NULL;
 //	log_msg("nbRunes(%d,%d) runesFirst(%08X, %08X) runesLast(%08X, %08X)",nbRunes,SgptDataTables->nbRunes,runesFirst, SgptDataTables->runes,runesLast,SgptDataTables->runes + SgptDataTables->nbRunes);
 
 	int nbRunesCompleted = 0;
 	DWORD curNbRunes = 0;
-	for (RunesBIN* runesData = runesFirst; runesData < runesLast; runesData++)
+	for (RunesBIN* runesData = runesFirst; runesData < runesLast; runesData = (RunesBIN*)((DWORD)runesData + sizeOfRunesBIN))
 	{
 		if (!runesData->Complete || runesData->Server) continue;
 		nbRunesCompleted++;

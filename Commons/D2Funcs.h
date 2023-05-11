@@ -554,18 +554,18 @@ F7(STD,  D2Win, 10017,10017,10017,10147,10113,10098,10098,10164,	void*,		D2Creat
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //D2SIGMA
 
-FUNC(D2Sigma,	STD,	0x6072E0, 0x0764B0, 0x07B100, 0x078E10, 0x078EB0, 0x0795C0, 0x07A810,		void,	D2DrawStatsPage, ());				// ASCII "Panels\StatScreen" (sub)
-FUNC(D2Sigma,	STD,	0x605330, 0x0743D0, 0x078DA0, 0x076A20, 0x076AC0, 0x0771D0, 0x0783D0,		void,	D2DrawStashPage, ());				// ASCII "Panels\Stash" (sub)
-FUNC(D2Sigma,	STD,	0x604D30, 0x073DD0, 0x0787A0, 0x076520, 0x0765C0, 0x076CD0, 0x077EB0,		void,	D2DrawSkillsPage, ());				// ASCII "Panels\SkillTree" (sub)
-FUNC(D2Sigma,	STD,	0x60CE30, 0x07C2F0, 0x0814F0, 0x07FD70, 0x07FE30, 0x080680, 0x0819F0,		void,	D2DrawStorePage, ());				// ASCII "Panels\Store" (sub)
+FUNC(D2Sigma,	STD,	0x6072E0, 0x0764B0, 0x07B100, 0x078E10, 0x078EB0, 0x0795C0, 0x07A810, 0x07AF30, 0x07B300,		void,	D2DrawStatsPage, ());				// ASCII "Panels\StatScreen" (sub)
+FUNC(D2Sigma,	STD,	0x605330, 0x0743D0, 0x078DA0, 0x076A20, 0x076AC0, 0x0771D0, 0x0783D0, 0x078AF0, 0x078EC0,		void,	D2DrawStashPage, ());				// ASCII "Panels\Stash" (sub)
+FUNC(D2Sigma,	STD,	0x604D30, 0x073DD0, 0x0787A0, 0x076520, 0x0765C0, 0x076CD0, 0x077EB0, 0x0785D0, 0x078920,		void,	D2DrawSkillsPage, ());				// ASCII "Panels\SkillTree" (sub)
+FUNC(D2Sigma,	STD,	0x60CE30, 0x07C2F0, 0x0814F0, 0x07FD70, 0x07FE30, 0x080680, 0x0819F0, 0x082210, 0x082A50,		void,	D2DrawStorePage, ());				// ASCII "Panels\Store" (sub)
 
-FUNC(D2Sigma,	STD,	0x607140, 0x076300, 0x07AF50, 0x078C60, 0x078D00, 0x079410, 0x07A660,		void,	D2DrawStatsPageBackground, ());		// D2DrawStatsPage sub
-FUNC(D2Sigma,	STD,	0x6071F0, 0x0763B0, 0x07B000, 0x078D10, 0x078DB0, 0x0794C0, 0x07A710,		void,	D2DrawStatsPageUiElements, ());		// D2DrawStatsPage sub
+FUNC(D2Sigma,	STD,	0x607140, 0x076300, 0x07AF50, 0x078C60, 0x078D00, 0x079410, 0x07A660, 0x07AD80, 0x07B150,		void,	D2DrawStatsPageBackground, ());		// D2DrawStatsPage sub
+FUNC(D2Sigma,	STD,	0x6071F0, 0x0763B0, 0x07B000, 0x078D10, 0x078DB0, 0x0794C0, 0x07A710, 0x07AE30, 0x07B200,		void,	D2DrawStatsPageUiElements, ());		// D2DrawStatsPage sub
 
-FUNC(D2Sigma,	FAST,	0x5D30C0, 0x03D690, 0x03F910, 0x03C300, 0x03C370, 0x03C6D0, 0x03CB10,		BOOL,	D2LoadModImage, (void** ptptImage, const char* szFileName));	// ASCII "Data\Global\Themes\classic_sigma\%s"
-FUNC(D2Sigma,	FAST,	0x5D3090, 0x03D660, 0x03F8E0, 0x03C2D0, 0x03C340, 0x03C6A0, 0x03CAE0,		void,	D2FreeModImage, (void** ptptImage));
+FUNC(D2Sigma,	FAST,	0x5D30C0, 0x03D690, 0x03F910, 0x03C300, 0x03C370, 0x03C6D0, 0x03CB10, 0x03CAD0, 0x03D0C0,		BOOL,	D2LoadModImage, (void** ptptImage, const char* szFileName));	// ASCII "Data\Global\Themes\classic_sigma\%s"
+FUNC(D2Sigma,	FAST,	0x5D3090, 0x03D660, 0x03F8E0, 0x03C2D0, 0x03C340, 0x03C6A0, 0x03CAE0, 0x03CAA0, 0x03D090,		void,	D2FreeModImage, (void** ptptImage));
 
-FUNC(D2Sigma,	FAST,	0x6024D0, 0x070F20, 0x0752F0, 0x072FE0, 0x073090, 0x073520, 0x0744A0,		Unit*,	D2FindSetItemById, (Unit* ptChar, int nSetItemId));
+FUNC(D2Sigma,	FAST,	0x6024D0, 0x070F20, 0x0752F0, 0x072FE0, 0x073090, 0x073520, 0x0744A0, 0x074890, 0x074C00,		Unit*,	D2FindSetItemById, (Unit* ptChar, int nSetItemId));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //D2CMP : ????0000

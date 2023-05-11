@@ -3,7 +3,7 @@ ___
 
 ## General Information
 
-MXL-PlugY is a project that based on [PlugY, The Survival Kit v11.02](https://github.com/ChaosMarc/PlugY/releases/tag/11.02) by Yohann Nicolas and designed to work specifically with Median-XL Sigma, a popular total conversion mod for Diablo II.
+MXL-PlugY is a project that based on [PlugY, The Survival Kit v11.02](https://github.com/ChaosMarc/PlugY/releases/tag/11.02) by Yohann Nicolas and designed to work specifically with Median XL Sigma, a popular total conversion mod for Diablo II.
 Only certain *stable* versions of MXL Sigma that correspond to major patches are supported, see the [table](#supported-versions) below.
 
 **MXL-PlugY is incompatible with any version of MXL Sigma starting from 2.0 onwards.**
@@ -35,6 +35,8 @@ Core module D2Sigma.dll has to be one of the following versions
 | 1.4.0/1.4.1  | `ECD522018E7CC3A8AAC9B84821682DAD5A091012` |
 | 1.5.3        | `F9475C0559E2EC8A314AD38A71548FCF23249564` |
 | 1.6.2/1.6.3  | `8BE36190CEE438210D863752D5AC8E7646A33764` |
+| 1.7.0-1.7.4  | `AC337812FDB2DD8E79E30E0A1AD3DC98FAC57E5B` |
+| 1.8.0        | `2B462099D2884902452C87F3B03668BE651BB167` |
 
 ## Installation
 

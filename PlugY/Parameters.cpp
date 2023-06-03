@@ -172,6 +172,7 @@ const char* S_active_LadderRunewords = "ActiveLadderRunewords";
 const char* S_active_EnabledCowPortalWhenCowKingWasKill = "ActiveCowPortalWhenCowKingWasKilled";
 const char* S_option_EnableGambleRefresh = "EnableGambleRefresh";
 const char* S_option_ForceLegacyBossLifebar = "ForceLegacyBossLifebar";
+const char* S_option_RemoveRespawnCooldown = "RemoveRespawnCooldown";
 
 const char* S_DLL = "DLL:\t";
 const char* S_DEFAULT = "DEFAULT:";
@@ -829,6 +830,10 @@ void init_ExtraOptions(INIFile* iniFile, INIFile* iniFixedFile, INIFile* iniDefa
 	GET_PRIVATE_PROFILE_STRING(S_EXTRA, S_option_ForceLegacyBossLifebar, "0");
 	option_ForceLegacyBossLifebar = atoi(buffer) != 0;
 	log_msg("option_ForceLegacyBossLifebar\t= %u\n", option_ForceLegacyBossLifebar);
+
+	GET_PRIVATE_PROFILE_STRING(S_EXTRA, S_option_RemoveRespawnCooldown, "0");
+	option_RemoveRespawnCooldown = atoi(buffer) != 0;
+	log_msg("option_RemoveRespawnCooldown\t= %u\n", option_RemoveRespawnCooldown);
 
 	log_msg("\n");
 }

@@ -289,6 +289,8 @@ F7(STD,	 D2Common,00000,00000,00000,00000,00000,00000,11120,00000,	int,			D2GetP
 F7(STD,	 D2Common,00000,00000,00000,00000,00000,00000,10044,00000,	int,			D2GetClassSkillId, (int nClassId, int nSkillLoc)); 
 F7(FAST, D2Common,00000,00000,00000,00000,00000,00000,10708,00000,	SkillData*,		D2GetSkillById, (Unit* ptUnit, int nSkillId, int nOwnerUID));
 
+F7(STD,  D2Common,00000,00000,00000,00000,00000,00000,10014,00000,	LevelsBIN*,		D2GetLevelsTxtRecord, (int nLevelId));
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //D2Client : 6FAA0000
 //E2F(D2Client,A9070,	void*,		D2LoadImage, (const char* filename, DWORD filetype));//1.11
@@ -566,6 +568,8 @@ FUNC(D2Sigma,	FAST,	0x5D30C0, 0x03D690, 0x03F910, 0x03C300, 0x03C370, 0x03C6D0, 
 FUNC(D2Sigma,	FAST,	0x5D3090, 0x03D660, 0x03F8E0, 0x03C2D0, 0x03C340, 0x03C6A0, 0x03CAE0, 0x03CAA0, 0x03D090,		void,	D2FreeModImage, (void** ptptImage));
 
 FUNC(D2Sigma,	FAST,	0x6024D0, 0x070F20, 0x0752F0, 0x072FE0, 0x073090, 0x073520, 0x0744A0, 0x074890, 0x074C00,		Unit*,	D2FindSetItemById, (Unit* ptChar, int nSetItemId));
+
+FUNC(D2Sigma,	FAST,	0x5F98C0, 0x066CB0, 0x06B200, 0x068160, 0x068220, 0x0685F0, 0x069330, 0x069710, 0x069A70,		void,	D2PushNotification, (int nIconNo, int nColor, DWORD dwDuration, LPCWSTR lpText, BOOL bUpdate));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //D2CMP : ????0000

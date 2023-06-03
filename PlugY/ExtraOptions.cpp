@@ -24,6 +24,7 @@ int active_EnabledCowPortalWhenCowKingWasKill = false;
 
 bool option_EnableGambleRefresh = false;
 bool option_ForceLegacyBossLifebar = false;
+bool option_RemoveRespawnCooldown = false;
 
 /****************************************************************************************************/
 
@@ -827,6 +828,113 @@ void Install_DisableSpecialLifebar()
 	// Display resistances and unqiue modifiers
 	mem_seek RVA(D2Sigma, 0x5E66A6, 0x052266, 0x056776, 0x0534D6, 0x053556, 0x053926, 0x054546, 0x0544F6, 0x054856);
 	memt_dword(0x00000200, 0x00000000); // MonStats3 flags: specLifebar (0x0200)
+
+	log_msg("\n");
+
+	isInstalled = true;
+}
+
+/****************************************************************************************************/
+
+void STDCALL NotifyLockoutTimer(WCHAR (&lpText)[0x132], int nLevelId, DWORD dwTimer)
+{
+	LevelsBIN* ptLevelsBin = D2GetLevelsTxtRecord(nLevelId);
+	if (ptLevelsBin == NULL)
+		return;
+
+	_snwprintf(lpText, _countof(lpText), getLocalString(STR_LOCKOUT_TIMER), D2GetStringFromIndex(*reinterpret_cast<WORD*>(reinterpret_cast<DWORD>(ptLevelsBin) + 0x145)), dwTimer);
+
+	D2PushNotification(5, GOLD, 5000, lpText, FALSE);
+}
+
+FCT_ASM( caller_EventMessage0C_113 )
+	LEA EAX, DWORD PTR SS:[ESP + 0x74]
+	PUSH DWORD PTR SS:[EBX + 0x18]
+	PUSH DWORD PTR SS:[EBX + 0x03]
+	PUSH EAX
+	CALL NotifyLockoutTimer
+	POP EBP
+	POP EDI
+	POP ESI
+	POP EBX
+	ADD ESP, 0x2C8
+	RETN 0x04
+}}
+
+void FASTCALL DispatchLockoutTimer(Game* ptGame, Unit* ptPlayer)
+{
+	Room* ptRoom = D2GetRoom(ptPlayer);
+	if (ptRoom == NULL)
+		return;
+
+	int nLevelId = D2GetLevelID(ptRoom);
+	if (nLevelId <= 0 || nLevelId >= (int)SgptDataTables->nbLevels)
+		return;
+
+	if (!(*reinterpret_cast<DWORD*>(*reinterpret_cast<DWORD*>(*reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptRoom) + 0x10) + 0x58) + 0x230) & 0x01))
+		return;
+
+	DWORD dwTimer = 0;
+	for (void* ptQuestControl = *reinterpret_cast<void**>(reinterpret_cast<DWORD>(ptGame) + 0x10F4), *ptTimer = *reinterpret_cast<void**>(reinterpret_cast<DWORD>(ptQuestControl) + 0x10); ptTimer != NULL; ptTimer = *reinterpret_cast<void**>(reinterpret_cast<DWORD>(ptTimer) + 0x10))
+	{
+		if (*reinterpret_cast<int*>(*reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptTimer) + 0x04) + 0x18) != nLevelId)
+			continue;
+
+		dwTimer = *reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptTimer) + 0x08) - *reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptQuestControl) + 0x14);
+		if (*reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptTimer) + 0x0C) > 20)
+		{
+			DWORD dwDecrement = dwTimer < 5 ? dwTimer : 5;
+			*reinterpret_cast<DWORD*>(reinterpret_cast<DWORD>(ptTimer) + 0x08) -= dwDecrement;
+			dwTimer -= dwDecrement;
+		}
+
+		break;
+	}
+
+	BYTE packet[0x28];
+	ZeroMemory(packet, sizeof(packet));
+
+	packet[0x00] = 0x5A;
+	packet[0x01] = 0x0C;
+	*reinterpret_cast<int*>(&packet[0x03]) = nLevelId;
+	*reinterpret_cast<DWORD*>(&packet[0x18]) = dwTimer;
+
+	for (NetClient* ptClient = *reinterpret_cast<NetClient**>(reinterpret_cast<DWORD>(ptGame) + 0x88); ptClient != NULL; ptClient = *reinterpret_cast<NetClient**>(reinterpret_cast<DWORD>(ptClient) + 0x4A8))
+		D2SendPacket(ptClient, &packet, sizeof(packet));
+}
+
+FCT_ASM( caller_PlayerDeathEvent_113 )
+	MOV EDX, ESI
+	MOV ECX, EBP
+	CALL DispatchLockoutTimer
+	RETN
+}}
+
+void Install_RemoveResurrectionDelay()
+{
+	static int isInstalled = false;
+	if (isInstalled) return;
+
+	log_msg("Patch D2Sigma, D2Game & D2Client to remove player respawn cooldown. (RemoveRespawnCooldown)\n");
+
+	// Manage event message
+	mem_seek(offset_D2Client + 0x07E6BC);
+	MEMT_DWORD(offset_D2Client + 0x07E67C, caller_EventMessage0C_113);
+
+	// Player mode change hook
+	mem_seek(offset_D2Game + 0x0797A8);
+	memt_byte(0x83, 0xE8);
+	MEMT_REF4(0x0E75003E, caller_PlayerDeathEvent_113);
+
+	// Init player resurrection
+	mem_seek RVA(D2Sigma, 0x601776, 0x0700E6, 0x074506, 0x072356, 0x072416, 0x072876, 0x0737F6, 0x073BE6, 0x073F56);
+	memt_byte(0x89, 0x90);
+	memt_byte(version_D2Sigma < MXLS_134 ? 0x48 : 0x41, 0x90);
+	memt_byte(0x10, 0x90);
+
+	// Manage player resurrection
+	mem_seek RVA(D2Sigma, 0x5FD095, 0x06A7B5, 0x06EBA5, 0x06BD85, 0x06BE45, 0x06C285, 0x06CFF5, 0x06D3A5, 0x06D725);
+	memt_dword(0x507DC083, 0x9090006A);
 
 	log_msg("\n");
 

@@ -283,6 +283,7 @@ void loadLocalizedStrings(int language)
 	LOAD(STR_NEXT_PAGE);
 	LOAD(STR_ITEM_LEVEL);
 	LOAD(STR_REFRESH_GAMBLE);
+	LOAD(STR_LOCKOUT_TIMER);
 
 	// Cube receipt :
 	LOAD(STR_COW_PORTAL);

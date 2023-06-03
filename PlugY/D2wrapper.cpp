@@ -541,6 +541,9 @@ extern "C" __declspec(dllexport) void* __stdcall Init(LPSTR IniName)
 	if (option_ForceLegacyBossLifebar)
 		Install_DisableSpecialLifebar();
 
+	if (option_RemoveRespawnCooldown)
+		Install_RemoveResurrectionDelay();
+
 	log_msg("\nDLL patched sucessfully.\n\n\n");
 
 	unhookLibraries();

@@ -21,6 +21,7 @@ extern int active_EnabledCowPortalWhenCowKingWasKill;
 
 extern bool option_EnableGambleRefresh;
 extern bool option_ForceLegacyBossLifebar;
+extern bool option_RemoveRespawnCooldown;
 
 void Install_DisplayItemLevel();
 void Install_SendPlayersCommand();
@@ -34,5 +35,6 @@ void Install_EnabledCowPortalWhenCowKingWasKill();
 
 void Install_RefreshGambleStock();
 void Install_DisableSpecialLifebar();
+void Install_RemoveResurrectionDelay();
 
 /*================================= END OF FILE =================================*/

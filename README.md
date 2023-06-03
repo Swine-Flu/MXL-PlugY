@@ -16,9 +16,10 @@ The most iconic PlugY features are fully available such as
 * Comprehensive character stats information
 
 Furthermore, there are also a few extra qol features
+* Restored /players command (*ActiveCommands*)
 * Gamble stock refresh (*EnableGambleRefresh*)
-* Legacy boss lifebar (*DisableSpecialLifebar*)
-* Restored /players command (*ActiveCommands*).
+* Legacy boss lifebar (*ForceLegacyBossLifebar*)
+* No respawn timer (*RemoveRespawnCooldown*)
 
 see [PlugY.ini](PlugYInstaller/PlugY.ini) and [PlugY Readme](PlugYInstaller/PlugY_The_Survival_Kit_-_Readme.txt) for additional information.
 

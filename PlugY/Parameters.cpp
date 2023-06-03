@@ -171,7 +171,7 @@ const char* S_active_DisplayBaseStatsValue = "ActiveDisplayBaseStatsValue";
 const char* S_active_LadderRunewords = "ActiveLadderRunewords";
 const char* S_active_EnabledCowPortalWhenCowKingWasKill = "ActiveCowPortalWhenCowKingWasKilled";
 const char* S_option_EnableGambleRefresh = "EnableGambleRefresh";
-const char* S_option_DisableSpecialLifebar = "DisableSpecialLifebar";
+const char* S_option_ForceLegacyBossLifebar = "ForceLegacyBossLifebar";
 
 const char* S_DLL = "DLL:\t";
 const char* S_DEFAULT = "DEFAULT:";
@@ -823,12 +823,12 @@ void init_ExtraOptions(INIFile* iniFile, INIFile* iniFixedFile, INIFile* iniDefa
 	log_msg("active_EnabledCowPortalWhenCowKingWasKill= %u\n\n", active_EnabledCowPortalWhenCowKingWasKill);
 
 	GET_PRIVATE_PROFILE_STRING(S_EXTRA, S_option_EnableGambleRefresh, "0");
-	option_EnableRefreshGamble = atoi(buffer) != 0;
-	log_msg("option_EnableRefreshGamble\t= %u\n", option_EnableRefreshGamble);
+	option_EnableGambleRefresh = atoi(buffer) != 0;
+	log_msg("option_EnableGambleRefresh\t= %u\n", option_EnableGambleRefresh);
 
-	GET_PRIVATE_PROFILE_STRING(S_EXTRA, S_option_DisableSpecialLifebar, "0");
-	option_DisableSpecialLifebar = atoi(buffer) != 0;
-	log_msg("option_DisableSpecialLifebar\t= %u\n", option_DisableSpecialLifebar);
+	GET_PRIVATE_PROFILE_STRING(S_EXTRA, S_option_ForceLegacyBossLifebar, "0");
+	option_ForceLegacyBossLifebar = atoi(buffer) != 0;
+	log_msg("option_ForceLegacyBossLifebar\t= %u\n", option_ForceLegacyBossLifebar);
 
 	log_msg("\n");
 }

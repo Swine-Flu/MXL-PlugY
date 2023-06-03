@@ -535,11 +535,11 @@ extern "C" __declspec(dllexport) void* __stdcall Init(LPSTR IniName)
 //	if (active_EnabledCowPortalWhenCowKingWasKill)
 //		Install_EnabledCowPortalWhenCowKingWasKill();
 
-	if (option_EnableRefreshGamble)
+	if (option_EnableGambleRefresh)
 		Install_RefreshGambleStock();
 
-	if (option_DisableSpecialLifebar)
-		Install_DisableSpecLifebar();
+	if (option_ForceLegacyBossLifebar)
+		Install_DisableSpecialLifebar();
 
 	log_msg("\nDLL patched sucessfully.\n\n\n");
 

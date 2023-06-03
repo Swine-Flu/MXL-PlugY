@@ -22,8 +22,8 @@ int active_DisplayBaseStatsValue = false;
 int active_LadderRunewords = false;
 int active_EnabledCowPortalWhenCowKingWasKill = false;
 
-bool option_EnableRefreshGamble = false;
-bool option_DisableSpecialLifebar = false;
+bool option_EnableGambleRefresh = false;
+bool option_ForceLegacyBossLifebar = false;
 
 /****************************************************************************************************/
 
@@ -783,7 +783,7 @@ void Install_RefreshGambleStock()
 	Install_PlugYImagesFiles();
 	Install_UpdateServer();
 
-	log_msg("Patch D2Sigma to add gamble refresh button. (EnableGambleRefresh)\n");
+	log_msg("Patch D2Sigma to provide gamble refresh button for shop interface. (EnableGambleRefresh)\n");
 
 	// Store page drawing hook
 	mem_seek RVA(D2Sigma, 0x5E75C3, 0x053249, 0x057769, 0x0544D9, 0x054559, 0x054929, 0x055549, 0x0554F9, 0x055859);
@@ -808,12 +808,12 @@ void Install_RefreshGambleStock()
 
 /****************************************************************************************************/
 
-void Install_DisableSpecLifebar()
+void Install_DisableSpecialLifebar()
 {
 	static int isInstalled = false;
 	if (isInstalled) return;
 
-	log_msg("Patch D2Sigma to disable special lifebar. (DisableSpecialLifebar)\n");
+	log_msg("Patch D2Sigma to display standard lifebar for bosses and superunique monsters. (ForceLegacyBossLifebar)\n");
 
 	// Disable special lifebar
 	mem_seek RVA(D2Sigma, 0x60BBA6, 0x07B046, 0x07FAB5, 0x07D6FD, 0x07D79D, 0x07DEBD, 0x07F14D, 0x07F89D, 0x07FD1D);

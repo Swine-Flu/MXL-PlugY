@@ -15,7 +15,7 @@
 extern bool active_SkillsPoints, active_StatsPoints, active_newInterfaces, active_multiPageStash, active_sharedGold;
 
 //#include "extraOptions.h"
-extern bool option_EnableRefreshGamble;
+extern bool option_EnableGambleRefresh;
 
 void* unassignSkillsBtnImages = NULL;
 void* unassignStatsBtnImages = NULL;
@@ -146,7 +146,7 @@ void STDCALL loadCustomImages()
 		D2LoadModImage(&gpClosePageButtonGfx, "Buttons\\Close");
 	if (active_newInterfaces)
 		D2LoadModImage(&gpStatsPageBackgroundGfx, "Panels\\PartyScreen");
-	if (option_EnableRefreshGamble)
+	if (option_EnableGambleRefresh)
 		D2LoadModImage(&gpRefreshStockButtonGfx, "Buttons\\vendor-refresh");
 }
 

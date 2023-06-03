@@ -243,7 +243,7 @@ static void* GetUnitProxy(void* ptNpcRecord, DWORD nPlayeUID)
 
 void RefreshGamble(Unit* ptChar)
 {
-	if (!option_EnableRefreshGamble)
+	if (!option_EnableGambleRefresh)
 		return;
 
 	BYTE bInteraction = *reinterpret_cast<BYTE*>(reinterpret_cast<DWORD>(ptChar) + 0x6C);
@@ -600,7 +600,7 @@ int STDCALL commands (char* ptText)
 
 	if (!strcmp(command, CMD_REFRESH_GAMBLE))
 	{
-		if (!option_EnableRefreshGamble || onRealm)
+		if (!option_EnableGambleRefresh || onRealm)
 			return 1;
 
 		Unit* ptVendor = D2GetActiveNpc();

@@ -19,8 +19,8 @@ extern int active_DisplayBaseStatsValue;
 extern int active_LadderRunewords;
 extern int active_EnabledCowPortalWhenCowKingWasKill;
 
-extern bool option_EnableRefreshGamble;
-extern bool option_DisableSpecialLifebar;
+extern bool option_EnableGambleRefresh;
+extern bool option_ForceLegacyBossLifebar;
 
 void Install_DisplayItemLevel();
 void Install_SendPlayersCommand();
@@ -33,6 +33,6 @@ void Install_LadderRunewords();
 void Install_EnabledCowPortalWhenCowKingWasKill();
 
 void Install_RefreshGambleStock();
-void Install_DisableSpecLifebar();
+void Install_DisableSpecialLifebar();
 
 /*================================= END OF FILE =================================*/
